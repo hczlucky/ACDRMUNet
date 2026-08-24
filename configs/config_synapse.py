@@ -6,7 +6,7 @@ class Config:
     data_path = data_root / "train_npz"
     list_dir = data_root / "lists/lists_Synapse"
     volume_path = data_root / "test_vol_h5"
-    pretrained_path = Path("./pre_trained_weights/vmamba_small_e238_ema.pth")
+    pretrained_path = Path("./pretrained_weights/vmamba_small_e238_ema.pth")
     output_dir = Path("./results")
 
     input_size = 224

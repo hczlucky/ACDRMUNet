@@ -3,7 +3,7 @@ __pycache__/
 .DS_Store
 
 data/
-pre_trained_weights/
+pretrained_weights/
 checkpoints/
 weights/
 *.pth

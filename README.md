@@ -50,16 +50,20 @@ inputs/BUSI/
         └── *.png
 ```
 
-## 2. Configure the Paths
+## 2. Prepare the Pre-trained Weights
+
+The weights of the pre-trained VMamba can be downloaded [here](https://github.com/MzeroMiko/VMamba) or [Baidu](https://pan.baidu.com/s/13cTgCUhMTvuWQ8HxNVaB8g?pwd=iq3q). After that, the pre-trained weights should be stored in `./pretrained_weights/`.
+
+## 3. Configure the Paths
 
 Edit the relative paths in `configs/config_synapse.py` if your dataset or pretrained checkpoint is stored elsewhere. The default locations are:
 
 ```text
 data/Synapse/
-pre_trained_weights/vmamba_small_e238_ema.pth
+pretrained_weights/vmamba_small_e238_ema.pth
 ```
 
-## 3. Train ACDR-MUNet
+## 4. Train ACDR-MUNet
 
 Run training from the repository root:
 
@@ -75,7 +79,7 @@ python train_synapse.py --resume results/<run_name>/latest.pth
 
 Training outputs are saved under `results/`.
 
-## 4. Main Files
+## 5. Main Files
 
 ```text
 configs/config_synapse.py          Synapse training configuration
@@ -87,10 +91,10 @@ train_synapse.py                   Training entry
 engine.py                          Training and volume-wise validation
 ```
 
-## 5. Citation
+## 6. Citation
 
 The paper is currently under submission. Citation information will be updated after publication.
 
-## 6. Acknowledgments
+## 7. Acknowledgments
 
 This repository is built upon and inspired by [MFEVM-UNet](https://github.com/loveAI666/MFEVM-UNet), [VM-UNet](https://github.com/JCruan519/VM-UNet), [VMamba](https://github.com/MzeroMiko/VMamba), and [Swin-UNet](https://github.com/HuCaoFighting/Swin-Unet). We thank the authors for their public implementations.
