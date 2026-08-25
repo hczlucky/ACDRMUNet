@@ -37,6 +37,8 @@ data/Synapse/
     └── caseXXXX_sliceXXX.npz
 ```
 
+Synapse slices are loaded as single-channel grayscale images and repeated to three channels by the model before patch embedding.
+
 ### BUSI
 
 The BUSI dataset can be found [here](https://scholar.cu.edu.eg/?q=afahmy/pages/dataset).

@@ -16,7 +16,7 @@ from .modules import AESC, UADR
 class ACDRMUNet(nn.Module):
     def __init__(
         self,
-        in_chans: int = 1,
+        in_chans: int = 3,
         num_classes: int = 9,
         depths: Sequence[int] = (2, 4, 8, 2),
         depths_decoder: Sequence[int] = (2, 4, 4, 2),
@@ -28,8 +28,8 @@ class ACDRMUNet(nn.Module):
         patch_norm: bool = True,
     ):
         super().__init__()
-        if int(in_chans) != 1 or int(num_classes) != 9:
-            raise ValueError("ACDRMUNet release expects one input channel and nine classes")
+        if int(in_chans) != 3 or int(num_classes) != 9:
+            raise ValueError("ACDRMUNet release expects three input channels and nine classes")
         if tuple(depths) != (2, 4, 8, 2):
             raise ValueError("Encoder depths must be [2, 4, 8, 2]")
         if tuple(depths_decoder) != (2, 4, 4, 2):
@@ -117,7 +117,11 @@ class ACDRMUNet(nn.Module):
         return x.permute(0, 2, 3, 1).contiguous()
 
     def forward(self, x, return_aux=None):
-        if x.ndim != 4 or x.shape[1] != self.in_chans:
+        if x.ndim != 4:
+            raise ValueError(f"Expected a four-dimensional input, got {tuple(x.shape)}")
+        if x.shape[1] == 1:
+            x = x.repeat(1, 3, 1, 1)
+        if x.shape[1] != self.in_chans:
             raise ValueError(
                 f"Expected input shaped [B, {self.in_chans}, H, W], got {tuple(x.shape)}"
             )

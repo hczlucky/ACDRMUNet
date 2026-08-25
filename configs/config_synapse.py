@@ -10,7 +10,7 @@ class Config:
     output_dir = Path("./results")
 
     input_size = 224
-    input_channels = 1
+    input_channels = 3
     num_classes = 9
     z_spacing = 1.0
     model = {

@@ -53,18 +53,9 @@ def _target_keys(source_key):
     return ()
 
 
-def _adapt(source, target, target_key):
+def _adapt(source, target):
     if tuple(source.shape) == tuple(target.shape):
         return source.to(dtype=target.dtype)
-    if (
-        target_key == "patch_embed.proj.weight"
-        and source.ndim == target.ndim == 4
-        and source.shape[1] == 3
-        and target.shape[1] == 1
-        and source.shape[0] == target.shape[0]
-        and source.shape[2:] == target.shape[2:]
-    ):
-        return source.sum(dim=1, keepdim=True).to(dtype=target.dtype)
     return None
 
 
@@ -85,7 +76,7 @@ def load_vmamba_small_pretrained(model, checkpoint_path):
             target_tensor = target_state.get(target_key)
             if target_tensor is None:
                 continue
-            compatible = _adapt(source_tensor, target_tensor, target_key)
+            compatible = _adapt(source_tensor, target_tensor)
             if compatible is not None:
                 assignments[target_key] = compatible
                 components[target_key] = component
