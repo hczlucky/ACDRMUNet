@@ -99,4 +99,4 @@ The paper is currently under submission. Citation information will be updated af
 
 ## 7. Acknowledgments
 
-This repository is built upon and inspired by [MFEVM-UNet](https://github.com/loveAI666/MFEVM-UNet), [VM-UNet](https://github.com/JCruan519/VM-UNet), [VMamba](https://github.com/MzeroMiko/VMamba), and [Swin-UNet](https://github.com/HuCaoFighting/Swin-Unet). We thank the authors for their public implementations.
+This repository is built upon and inspired by [VM-UNet](https://github.com/JCruan519/VM-UNet), [VMamba](https://github.com/MzeroMiko/VMamba), and [Swin-UNet](https://github.com/HuCaoFighting/Swin-Unet). We thank the authors for their public implementations.
